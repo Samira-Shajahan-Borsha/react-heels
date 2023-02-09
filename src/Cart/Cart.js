@@ -5,7 +5,6 @@ import { IoTrashBin } from "react-icons/io5";
 const Cart = ({ cart, products, handleClearCart }) => {
 
   const [offer, setOffer] = useState(false);
-  // console.log(offer);
 
   const [freeProduct, setFreeProduct] = useState({});
 
@@ -19,6 +18,9 @@ const Cart = ({ cart, products, handleClearCart }) => {
   useEffect(() => {
     if (cart.length > 0) {
       setOffer(true);
+    }
+    else {
+      setOffer(false);
     }
   }, [cart]);
 
@@ -43,6 +45,7 @@ const Cart = ({ cart, products, handleClearCart }) => {
               {product.name} {product.color}
             </p>
             <p>$ {product.price}</p>
+            <p>{product.quantity}</p>
           </div>
         </div>
       ))}
