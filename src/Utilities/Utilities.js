@@ -20,12 +20,12 @@ const addToLocalStorage = (id) => {
             shoppingCart[id] = 1;
         }
     }
-
-
-
-
     localStorage.setItem('shopping_cart', JSON.stringify(shoppingCart));
 
 }
 
-export { addToLocalStorage, getFromLocalStorage };
+const clearLocalStorage = () => {
+    localStorage.removeItem('shopping_cart');
+}
+
+export { addToLocalStorage, getFromLocalStorage, clearLocalStorage };

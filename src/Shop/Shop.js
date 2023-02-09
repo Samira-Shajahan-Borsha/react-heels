@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Cart from "../Cart/Cart";
 import Product from "../Product/Product";
-import { addToLocalStorage, getFromLocalStorage } from "../Utilities/Utilities";
+import { addToLocalStorage, clearLocalStorage, getFromLocalStorage } from "../Utilities/Utilities";
 import "./Shop.css";
 
 const Shop = () => {
@@ -18,11 +18,9 @@ const Shop = () => {
   useEffect(() => {
     if (products.length) {
       const storedProducts = getFromLocalStorage();
-      console.log(storedProducts);
       const previousCart = [];
       for (const id in storedProducts) {
         const foundProduct = products.find(product => product.id === id);
-        console.log(foundProduct)
         if (foundProduct) {
           const quantity = storedProducts[id];
           foundProduct.quantity = quantity;
@@ -52,6 +50,7 @@ const Shop = () => {
 
   const handleClearCart = () => {
     setCart([]);
+    clearLocalStorage();
   };
 
   return (
